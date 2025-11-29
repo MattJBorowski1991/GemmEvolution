@@ -1,0 +1,137 @@
+Run started: Sat Nov 29 01:02:16 UTC 2025
+==> Computing device peaks
+Device: NVIDIA RTX A4000 (SM 86)
+Fpeak: 19169.3 GFLOPS
+Bpeak: 448.1 GB/s
+Ridge: 42.78 FLOPs/byte
+==> Building 01_naive.cu
+==> Running ./01_naive
+===01_naive===
+01_naive            1024x1024 : 1.93 ms, 1113.9 GFLOPS, 8.7 GB/s, 128.00 FLOPs/byte, Occ 100% (6 blk/SM)
+01_naive            2048x2048 : 14.67 ms, 1171.5 GFLOPS, 4.6 GB/s, 256.00 FLOPs/byte, Occ 100% (6 blk/SM)
+01_naive            4096x4096 : 116.39 ms, 1180.9 GFLOPS, 2.3 GB/s, 512.00 FLOPs/byte, Occ 100% (6 blk/SM)
+01_naive            8192x8192 : 943.63 ms, 1165.2 GFLOPS, 1.1 GB/s, 1024.00 FLOPs/byte, Occ 100% (6 blk/SM)
+-- Completed 01_naive
+
+==> Building 02_anti_coalesced.cu
+==> Running ./02_anti_coalesced
+=== 02_anti_coalesced (B transposed) === 
+02_anti_coalesced   1024x1024 : 8.29 ms, 259.1 GFLOPS, 2.0 GB/s, 128.00 FLOPs/byte, Occ 100% (6 blk/SM)
+02_anti_coalesced   2048x2048 : 65.83 ms, 261.0 GFLOPS, 1.0 GB/s, 256.00 FLOPs/byte, Occ 100% (6 blk/SM)
+02_anti_coalesced   4096x4096 : 483.44 ms, 284.3 GFLOPS, 0.6 GB/s, 512.00 FLOPs/byte, Occ 100% (6 blk/SM)
+02_anti_coalesced   8192x8192 : 3478.54 ms, 316.1 GFLOPS, 0.3 GB/s, 1024.00 FLOPs/byte, Occ 100% (6 blk/SM)
+-- Completed 02_anti_coalesced
+
+==> Building 03_shared_memory.cu
+==> Running ./03_shared_memory
+===03_shared_memory (tiling) ===
+03_shared_memory    1024x1024 : 1.77 ms, 1212.4 GFLOPS, 9.5 GB/s, 128.00 FLOPs/byte, Occ 100% (6 blk/SM)
+03_shared_memory    2048x2048 : 13.14 ms, 1307.7 GFLOPS, 5.1 GB/s, 256.00 FLOPs/byte, Occ 100% (6 blk/SM)
+03_shared_memory    4096x4096 : 104.67 ms, 1313.1 GFLOPS, 2.6 GB/s, 512.00 FLOPs/byte, Occ 100% (6 blk/SM)
+03_shared_memory    8192x8192 : 820.29 ms, 1340.4 GFLOPS, 1.3 GB/s, 1024.00 FLOPs/byte, Occ 100% (6 blk/SM)
+-- Completed 03_shared_memory
+
+==> Building 04_register_unroll_a.cu
+==> Running ./04_register_unroll_a
+===05_register_unroll===
+04_register_unroll  1024x1024 : 1.68 ms, 1279.9 GFLOPS, 10.0 GB/s, 128.00 FLOPs/byte, Occ 67% (1 blk/SM)
+04_register_unroll  2048x2048 : 12.41 ms, 1384.4 GFLOPS, 5.4 GB/s, 256.00 FLOPs/byte, Occ 67% (1 blk/SM)
+04_register_unroll  4096x4096 : 98.08 ms, 1401.3 GFLOPS, 2.7 GB/s, 512.00 FLOPs/byte, Occ 67% (1 blk/SM)
+04_register_unroll  8192x8192 : 700.69 ms, 1569.2 GFLOPS, 1.5 GB/s, 1024.00 FLOPs/byte, Occ 67% (1 blk/SM)
+-- Completed 04_register_unroll_a
+
+==> Building 04_register_unroll_b.cu
+==> Running ./04_register_unroll_b
+===05_register_unroll===
+04_register_unroll  1024x1024 : 1.68 ms, 1281.2 GFLOPS, 10.0 GB/s, 128.00 FLOPs/byte, Occ 67% (1 blk/SM)
+04_register_unroll  2048x2048 : 12.40 ms, 1384.9 GFLOPS, 5.4 GB/s, 256.00 FLOPs/byte, Occ 67% (1 blk/SM)
+04_register_unroll  4096x4096 : 97.97 ms, 1402.9 GFLOPS, 2.7 GB/s, 512.00 FLOPs/byte, Occ 67% (1 blk/SM)
+04_register_unroll  8192x8192 : 702.44 ms, 1565.3 GFLOPS, 1.5 GB/s, 1024.00 FLOPs/byte, Occ 67% (1 blk/SM)
+-- Completed 04_register_unroll_b
+
+==> Building 05_float4_vectorized_a.cu
+==> Running ./05_float4_vectorized_a
+===05_float4_vectorized===
+05_float4_vectorized1024x1024 : 1.27 ms, 1689.8 GFLOPS, 13.2 GB/s, 128.00 FLOPs/byte, Occ 100% (6 blk/SM)
+05_float4_vectorized2048x2048 : 9.95 ms, 1727.2 GFLOPS, 6.7 GB/s, 256.00 FLOPs/byte, Occ 100% (6 blk/SM)
+05_float4_vectorized4096x4096 : 89.39 ms, 1537.6 GFLOPS, 3.0 GB/s, 512.00 FLOPs/byte, Occ 100% (6 blk/SM)
+05_float4_vectorized8192x8192 : 728.86 ms, 1508.5 GFLOPS, 1.5 GB/s, 1024.00 FLOPs/byte, Occ 100% (6 blk/SM)
+-- Completed 05_float4_vectorized_a
+
+==> Building 05_float4_vectorized_b.cu
+==> Running ./05_float4_vectorized_b
+===05_float4_vectorized_b (pre-transpose B off timing)===
+05_float4_vectorized_b1024x1024 : 1.57 ms, 1369.6 GFLOPS, 10.7 GB/s, 128.00 FLOPs/byte, Occ 100% (3 blk/SM)
+05_float4_vectorized_b2048x2048 : 11.61 ms, 1479.4 GFLOPS, 5.8 GB/s, 256.00 FLOPs/byte, Occ 100% (3 blk/SM)
+05_float4_vectorized_b4096x4096 : 92.62 ms, 1483.9 GFLOPS, 2.9 GB/s, 512.00 FLOPs/byte, Occ 100% (3 blk/SM)
+05_float4_vectorized_b8192x8192 : 963.43 ms, 1141.2 GFLOPS, 1.1 GB/s, 1024.00 FLOPs/byte, Occ 100% (3 blk/SM)
+-- Completed 05_float4_vectorized_b
+
+==> Building 06_autotune_tiles.cu
+==> Running ./06_autotune_tiles
+===06_autotune_tiles (run_gemm_test)===
+06_tiles_T8         1024x1024 : 1.98 ms, 1082.2 GFLOPS, 8.5 GB/s, 128.00 FLOPs/byte, Occ 67% (16 blk/SM)
+06_tiles_T16        1024x1024 : 1.42 ms, 1512.2 GFLOPS, 11.8 GB/s, 128.00 FLOPs/byte, Occ 100% (6 blk/SM)
+06_tiles_T32        1024x1024 : 1.61 ms, 1334.8 GFLOPS, 10.4 GB/s, 128.00 FLOPs/byte, Occ 67% (1 blk/SM)
+06_tiles_T8         2048x2048 : 15.05 ms, 1141.4 GFLOPS, 4.5 GB/s, 256.00 FLOPs/byte, Occ 67% (16 blk/SM)
+06_tiles_T16        2048x2048 : 11.11 ms, 1546.8 GFLOPS, 6.0 GB/s, 256.00 FLOPs/byte, Occ 100% (6 blk/SM)
+06_tiles_T32        2048x2048 : 12.45 ms, 1380.1 GFLOPS, 5.4 GB/s, 256.00 FLOPs/byte, Occ 67% (1 blk/SM)
+06_tiles_T8         4096x4096 : 158.68 ms, 866.1 GFLOPS, 1.7 GB/s, 512.00 FLOPs/byte, Occ 67% (16 blk/SM)
+06_tiles_T16        4096x4096 : 82.67 ms, 1662.5 GFLOPS, 3.2 GB/s, 512.00 FLOPs/byte, Occ 100% (6 blk/SM)
+06_tiles_T32        4096x4096 : 86.17 ms, 1594.9 GFLOPS, 3.1 GB/s, 512.00 FLOPs/byte, Occ 67% (1 blk/SM)
+06_tiles_T8         8192x8192 : 1315.83 ms, 835.6 GFLOPS, 0.8 GB/s, 1024.00 FLOPs/byte, Occ 67% (16 blk/SM)
+06_tiles_T16        8192x8192 : 702.03 ms, 1566.2 GFLOPS, 1.5 GB/s, 1024.00 FLOPs/byte, Occ 100% (6 blk/SM)
+06_tiles_T32        8192x8192 : 711.77 ms, 1544.8 GFLOPS, 1.5 GB/s, 1024.00 FLOPs/byte, Occ 67% (1 blk/SM)
+-- Completed 06_autotune_tiles
+
+==> Building 07_tensor_core_wmma.cu
+==> Running ./07_tensor_core_wmma
+===07_tensor_wmma===
+07_tensor_wmma      1024x1024 : 0.35 ms, 6114.1 GFLOPS, 35.8 GB/s, 170.67 FLOPs/byte, Occ 33% (16 blk/SM)
+07_tensor_wmma      2048x2048 : 2.08 ms, 8260.6 GFLOPS, 24.2 GB/s, 341.33 FLOPs/byte, Occ 33% (16 blk/SM)
+07_tensor_wmma      4096x4096 : 16.13 ms, 8518.5 GFLOPS, 12.5 GB/s, 682.67 FLOPs/byte, Occ 33% (16 blk/SM)
+07_tensor_wmma      8192x8192 : 182.63 ms, 6020.4 GFLOPS, 4.4 GB/s, 1365.33 FLOPs/byte, Occ 33% (16 blk/SM)
+-- Completed 07_tensor_core_wmma
+
+==> Building 08_double_buffered_a.cu
+==> Running ./08_double_buffered_a
+===08_double_buffered (wmma runner)===
+08_double_buffered  1024x1024 : 4.59 ms, 467.7 GFLOPS, 2.7 GB/s, 170.67 FLOPs/byte, Occ 83% (5 blk/SM)
+08_double_buffered  2048x2048 : 34.98 ms, 491.2 GFLOPS, 1.4 GB/s, 341.33 FLOPs/byte, Occ 83% (5 blk/SM)
+08_double_buffered  4096x4096 : 274.61 ms, 500.5 GFLOPS, 0.7 GB/s, 682.67 FLOPs/byte, Occ 83% (5 blk/SM)
+08_double_buffered  8192x8192 : 1990.54 ms, 552.4 GFLOPS, 0.4 GB/s, 1365.33 FLOPs/byte, Occ 83% (5 blk/SM)
+-- Completed 08_double_buffered_a
+
+==> Building 08_double_buffered_b.cu
+==> Running ./08_double_buffered_b
+===08_double_buffered_b (wmma runner)===
+08_double_buffered_b1024x1024 : 0.90 ms, 2380.4 GFLOPS, 13.9 GB/s, 170.67 FLOPs/byte, Occ 83% (5 blk/SM)
+08_double_buffered_b2048x2048 : 4.99 ms, 3440.8 GFLOPS, 10.1 GB/s, 341.33 FLOPs/byte, Occ 83% (5 blk/SM)
+08_double_buffered_b4096x4096 : 38.55 ms, 3565.6 GFLOPS, 5.2 GB/s, 682.67 FLOPs/byte, Occ 83% (5 blk/SM)
+08_double_buffered_b8192x8192 : 292.49 ms, 3759.1 GFLOPS, 2.8 GB/s, 1365.33 FLOPs/byte, Occ 83% (5 blk/SM)
+-- Completed 08_double_buffered_b
+
+==> Building 08_double_buffered_c.cu
+==> Running ./08_double_buffered_c
+===08_double_buffered_c (wmma runner)===
+08_double_buffered_c1024x1024 : 0.29 ms, 7436.7 GFLOPS, 43.6 GB/s, 170.67 FLOPs/byte, Occ 67% (4 blk/SM)
+08_double_buffered_c2048x2048 : 1.71 ms, 10070.2 GFLOPS, 29.5 GB/s, 341.33 FLOPs/byte, Occ 67% (4 blk/SM)
+08_double_buffered_c4096x4096 : 13.26 ms, 10367.5 GFLOPS, 15.2 GB/s, 682.67 FLOPs/byte, Occ 67% (4 blk/SM)
+08_double_buffered_c8192x8192 : 105.83 ms, 10389.8 GFLOPS, 7.6 GB/s, 1365.33 FLOPs/byte, Occ 67% (4 blk/SM)
+-- Completed 08_double_buffered_c
+
+==> Building 09_cublas.cu
+==> Running ./09_cublas
+===09_cublas (library reference)===
+09_cublas_sgemm     1024x1024 : 73.36 ms, 29.3 GFLOPS, 0.2 GB/s, 128.00 FLOPs/byte, Occ N/A
+09_cublas_fp16_tc   1024x1024 : 82.53 ms, 26.0 GFLOPS, 0.2 GB/s, 170.67 FLOPs/byte, Occ N/A
+09_cublas_sgemm     2048x2048 : 0.42 ms, 40454.4 GFLOPS, 158.0 GB/s, 256.00 FLOPs/byte, Occ N/A
+09_cublas_fp16_tc   2048x2048 : 0.38 ms, 45466.7 GFLOPS, 133.2 GB/s, 341.33 FLOPs/byte, Occ N/A
+09_cublas_sgemm     4096x4096 : 2.62 ms, 52383.4 GFLOPS, 102.3 GB/s, 512.00 FLOPs/byte, Occ N/A
+09_cublas_fp16_tc   4096x4096 : 2.54 ms, 54076.4 GFLOPS, 79.2 GB/s, 682.67 FLOPs/byte, Occ N/A
+09_cublas_sgemm     8192x8192 : 18.77 ms, 58574.5 GFLOPS, 57.2 GB/s, 1024.00 FLOPs/byte, Occ N/A
+09_cublas_fp16_tc   8192x8192 : 15.89 ms, 69188.9 GFLOPS, 50.7 GB/s, 1365.33 FLOPs/byte, Occ N/A
+-- Completed 09_cublas
+
+All runs completed.
+Run finished: Sat Nov 29 01:03:31 UTC 2025

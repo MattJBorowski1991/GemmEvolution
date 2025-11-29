@@ -1,0 +1,46 @@
+Device: NVIDIA RTX A4000 (Ampere, CC 8.6)
+Driver Version: 550.163.01
+CUDA Runtime Version: 12.4
+CUDA Compiler (nvcc): 12.8 (V12.8.93)
+
+Core/SM:
+- SMs: 48
+- Warp Size: 32
+- Max Threads per SM: 1536
+- Max Blocks per SM: 16
+
+Thread/Block Limits:
+- Max Threads per Block: 1024
+- Max Threads Dim: [1024, 1024, 64]
+- Max Grid Size: [2147483647, 65535, 65535]
+
+Shared/Registers:
+- Shared Mem per Block: 49,152 bytes (opt-in up to 101,376 bytes)
+- Shared Mem per SM: 102,400 bytes
+- Registers per Block: 65,536
+- Registers per SM: 65,536
+
+Memory:
+- Total Global Memory: 16,883,908,608 bytes (~15.7 GiB)
+- L2 Cache: 4,194,304 bytes (4 MiB)
+- Memory Clock: 7001 MHz
+- Bus Width: 256-bit
+
+PCIe:
+- Host Max Gen: 3, Device Max Gen: 4
+- Current: Gen1 x16 (as reported)
+
+Power/Thermals:
+- Power Limit: 140 W (min 100 W, max 140 W)
+- Idle Draw: ~13.3 W
+- GPU Temp: 28 C
+
+Features:
+- Concurrent Kernels: Yes
+- Cooperative Launch: Yes
+- Persistence Mode: Enabled
+- Display: Disabled/Inactive
+
+Identifiers:
+- GPU UUID: GPU-3e2d9ba9-4502-d950-edb6-e358349b723f
+- VBIOS: 94.04.57.00.08
