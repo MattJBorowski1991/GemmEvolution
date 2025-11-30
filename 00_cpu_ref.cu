@@ -12,8 +12,6 @@
 #include "common/testing_sizes.hpp"
 #include "common/utils.cuh"
 
-//nvcc -O3 -arch=sm_70 00_cpu_reference.cu -o 00_cpu_reference
-
 void cpu_sgemm(float alpha, const float* A, const float* B, float beta, float* C, int M, int K, int N) {
     for (int m = 0; m<M; ++m){
         for (int n=0; n<N; ++n){
